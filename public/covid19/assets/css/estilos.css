@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  padding: 10%;
+}
+.datos_tabla_total {
+  height: 400px;
+  overflow-x: hidden;
+}
+
+.chartContainer {
+  width: 80%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0 auto;
+  
+}
