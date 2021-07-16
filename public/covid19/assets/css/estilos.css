@@ -1,9 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap");
 
+:root {
+  --black: #1f1d2c;
+  --black-light: #262837;
+  --grey: #363342;
+  --grey-2: #2e303f;
+  --purple: #6b5ecd;
+  --cyan: #099ff4;
+  --red: #ea5f5e;
+  --green: #22b080;
+  --white: #e3e3e3;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
   padding: 10%;
+  background: var(--black);
+  height: 100%;
+  width: 100vw;
+  overflow-x: hidden;
+  padding-bottom: 100px;
+}
+.c_white {
+  color: var(--white);
 }
 .datos_tabla_total {
   height: 400px;
@@ -15,5 +35,60 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
   margin: 0 auto;
-  
+}
+
+.datos_tabla_total {
+  background: var(--black-light);
+  padding: 30px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 3px 16px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 3px 16px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 16px -2px rgba(0, 0, 0, 0.75);
+}
+thead tr th {
+  color: var(--white);
+  text-transform: uppercase;
+}
+tbody tr th {
+  color: var(--white);
+}
+tbody tr td {
+  color: var(--white);
+}
+.button-modal {
+  color: var(--white);
+  background-color: var(--purple);
+  border: none;
+}
+.button-modal:hover {
+  color: var(--white);
+  background-color: var(--cyan);
+  border: none;
+}
+
+.chartContainer {
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 0;
+  -webkit-box-shadow: 0px 3px 16px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 3px 16px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 16px -2px rgba(0, 0, 0, 0.75);
+}
+#bar-chart-grouped {
+  width: 100% !important;
+}
+.pais {
+  font-weight: 600;
+  color: var(--purple);
+}
+
+#doughnut-chart {
+  background-color: white;
+  box-shadow: none;
+}
+
+.no-shadow {
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  border: none;
 }
