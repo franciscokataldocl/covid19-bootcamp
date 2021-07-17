@@ -15,12 +15,11 @@
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
-  padding: 10%;
+
   background: var(--black);
   height: 100%;
   width: 100vw;
   overflow-x: hidden;
-  padding-bottom: 100px;
 }
 .c_white {
   color: var(--white);
