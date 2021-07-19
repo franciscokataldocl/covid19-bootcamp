@@ -20,7 +20,7 @@ const getTotalData = async () => {
     const recoveredCases = result.map((item) => item.recovered);
 
     /*chart */
-    console.log(activeLocation);
+
     new Chart(document.getElementById("bar-chart-grouped"), {
       type: "bar",
       data: {
