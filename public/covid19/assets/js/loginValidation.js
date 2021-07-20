@@ -7,11 +7,12 @@ const errorLogin = document.getElementById("errorLogin");
 
 (() => {
   const cerrarSesion = document.getElementById("cerrarSesion");
+
   if (localStorage.getItem("llave") != undefined) {
     itemSesion.innerHTML = `
     <a id="cerrarSesion" class="nav-link" href="#" >Cerrar Sesión</a>`;
     situacionChile.innerHTML =
-      '<a class="nav-link" href="/covid19/situacion-chile.html">Situación en Chile</a>';
+      '<a class="nav-link situacion" href="/covid19/situacion-chile.html">Situación en Chile</a>';
   } else {
     itemSesion.innerHTML = `
     <a id="nav-item-login" class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión</a>`;
@@ -32,7 +33,7 @@ const loginValidation = async (email, password) => {
       //loading.classList.add("remove");
     } else {
       localStorage.setItem("llave", token);
-      //loading.classList.remove("remove");
+
       errorLogin.innerHTML = "";
       location.reload();
     }
@@ -52,5 +53,5 @@ loginButon.addEventListener("click", async (e) => {
 //cerrar sesion
 cerrarSesion.addEventListener("click", async (e) => {
   localStorage.removeItem("llave");
-  window.location.href = "/covid19";
+  window.location.href = "/covid19/";
 });
