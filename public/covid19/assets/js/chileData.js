@@ -1,6 +1,12 @@
 const graficoChile = document.getElementById("graficoChile");
 const loading = document.getElementById("loading");
 
+// 5. Al hacer click en la opción Situación Chile, se debe llamar a las siguientes APIs.
+//
+// ● http://localhost:3000/api/confirmed
+// ● http://localhost:3000/api/deaths
+// ● http://localhost:3000/api/recovered
+
 //get confirmados
 const getChileConfirmed = async (jwt) => {
   try {
@@ -66,6 +72,9 @@ Promise.all([p1, p2, p3]).then((values) => {
 
   graficoChile.innerHTML = `<canvas id="line-chart" width="800" height="450"></canvas>`;
 
+  //   6. En un sólo gráfico de línea se debe mostrar la información obtenida de las APIs del
+  // punto
+
   //crear chart
   new Chart(document.getElementById("line-chart"), {
     type: "line",
@@ -100,5 +109,5 @@ Promise.all([p1, p2, p3]).then((values) => {
       },
     },
   });
- loading.remove();
+  loading.remove();
 });

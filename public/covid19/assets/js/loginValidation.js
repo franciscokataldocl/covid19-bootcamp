@@ -5,14 +5,16 @@ const itemSesion = document.getElementById("item-sesion");
 const situacionChile = document.getElementById("situacionChile");
 const errorLogin = document.getElementById("errorLogin");
 
+// 2. Al hacer click en Iniciar sesión se debe levantar un modal con un formulario que le
+// pida al usuario ingresar un correo y una contraseña.
+
 (() => {
   const cerrarSesion = document.getElementById("cerrarSesion");
 
   if (localStorage.getItem("llave") != undefined) {
     itemSesion.innerHTML = `
     <a id="cerrarSesion" class="nav-link" href="#" >Cerrar Sesión</a>`;
-    situacionChile.innerHTML =
-      '<a class="nav-link situacion" href="/covid19/situacion-chile.html">Situación en Chile</a>';
+    situacionChile.innerHTML = '<a class="nav-link situacion" href="/covid19/situacion-chile.html">Situación en Chile</a>';
   } else {
     const location = window.location.href;
     if (location === "http://localhost:3000/covid19/situacion-chile.html") {
@@ -24,6 +26,13 @@ const errorLogin = document.getElementById("errorLogin");
     situacionChile.innerHTML = "";
   }
 })();
+
+// 3. Implementar la lógica para obtener el JWT cuando se ingrese el correo y contraseña
+// a través del formulario.
+// ● Llamar a la API para obtener el JWT.
+// ● Persistir el JWT.
+// ● Cuando exista un JWT, se debe ocultar la opción del menú que dice Iniciar
+// sesión, se debe agregar una que diga Situación Chile y otra de Cerrar sesión.
 
 const loginValidation = async (email, password) => {
   try {
@@ -52,6 +61,10 @@ loginButon.addEventListener("click", (e) => {
   e.preventDefault();
   loginValidation(userEmail.value, userPassword.value);
 });
+
+// 7. Al hacer click sobre el link Cerrar sesión del menú se debe volver al estado inicial de
+// la aplicación, eliminar el token y ocultar los link de Situación Chile y Cerrar sesión,
+// además de volver a mostrar Iniciar sesión.
 
 //cerrar sesion
 //deberia instanciar esta funcion solo si se encuentra la llave en localstorage
