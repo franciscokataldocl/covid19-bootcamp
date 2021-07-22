@@ -58,7 +58,7 @@ const getChileRecovered = async (jwt) => {
   }
 };
 
-const tokenValue = localStorage.getItem("llave");
+const tokenValue = sessionStorage.getItem("llave");
 const p1 = getChileConfirmed(tokenValue);
 const p2 = getChileDeaths(tokenValue);
 const p3 = getChileRecovered(tokenValue);

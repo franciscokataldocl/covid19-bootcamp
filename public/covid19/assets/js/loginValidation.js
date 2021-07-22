@@ -11,18 +11,23 @@ const errorLogin = document.getElementById("errorLogin");
 (() => {
   const cerrarSesion = document.getElementById("cerrarSesion");
 
-  if (localStorage.getItem("llave") != undefined) {
+  if (sessionStorage.getItem("llave") != undefined) {
+    //si la llave existe mostramos cerrar sesion en el menu
     itemSesion.innerHTML = `
     <a id="cerrarSesion" class="nav-link" href="#" >Cerrar Sesión</a>`;
-    situacionChile.innerHTML = '<a class="nav-link situacion" href="/covid19/situacion-chile.html">Situación en Chile</a>';
+    //mostramos el link a la pagina de situacion en chile
+    situacionChile.innerHTML =
+      '<a class="nav-link situacion" href="/covid19/situacion-chile.html">Situación en Chile</a>';
   } else {
+    //si la llave no existe y se intenta ingresar a la ruta de situacion en chile, hacemos redireccion al home
     const location = window.location.href;
     if (location === "http://localhost:3000/covid19/situacion-chile.html") {
       window.location.href = "/covid19/";
     }
-
+    //si la llave no existe mostramos el item de iniciar sesion
     itemSesion.innerHTML = `
     <a id="nav-item-login" class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión</a>`;
+    //ocultamos el item de situacion en chile
     situacionChile.innerHTML = "";
   }
 })();
@@ -43,13 +48,23 @@ const loginValidation = async (email, password) => {
     const { token } = await response.json();
 
     if (token === undefined) {
+      //si token es undefined mostramos un mensaje de error
       errorLogin.innerHTML = `<p class="error-form text-center animate__animated animate__shakeX">Datos incorrectos</p>`;
-      //loading.classList.add("remove");
     } else {
-      localStorage.setItem("llave", token);
+    //si token existe lo almacenamos en sessionStorage
+      sessionStorage.setItem("llave", token);
+      const sesionIniciada = document.getElementById("sesionIniciada");
+      //mostramos el mensaje de sesion iniciada
+      sesionIniciada.classList.remove("ocultarSesion");
 
+      //luego de 3 segundos ocultamos la ventana de sesion iniciada
+      function mensajeInicio() {
+        location.reload();
+        sesionIniciada.classList.add("ocultarSesion");
+      }
+      setTimeout(mensajeInicio, 3000);
+      //eliminamos el mensaje de error del formulario en el modal
       errorLogin.innerHTML = "";
-      location.reload();
     }
   } catch (err) {
     console.error(`Error: ${err}`);
@@ -59,6 +74,7 @@ const loginValidation = async (email, password) => {
 //form click
 loginButon.addEventListener("click", (e) => {
   e.preventDefault();
+  //al hacer click en ingresar enviamos  los valores del input a la funcion que valida el jwt
   loginValidation(userEmail.value, userPassword.value);
 });
 
@@ -67,8 +83,10 @@ loginButon.addEventListener("click", (e) => {
 // además de volver a mostrar Iniciar sesión.
 
 //cerrar sesion
-//deberia instanciar esta funcion solo si se encuentra la llave en localstorage
+//deberia instanciar esta funcion solo si se encuentra la llave en sessionStorage
 cerrarSesion.addEventListener("click", (e) => {
-  localStorage.removeItem("llave");
+  //al hacer click en cerrar sesion eliminamos la llave
+  sessionStorage.removeItem("llave");
+  //redirigimos al home
   window.location.href = "/covid19/";
 });

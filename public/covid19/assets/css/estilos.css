@@ -117,3 +117,73 @@ tbody tr td {
   color: var(--purple) !important;
   font-weight: 600;
 }
+
+#loginModal .modal-content {
+  background: var(--black-light);
+  background: var(--black-light);
+  min-width: 500px;
+}
+#loginModal .modal-content .modal-title {
+  color: var(--white);
+}
+
+#loginModal .modal-content label {
+  color: var(--white);
+}
+
+#errorLogin {
+  color: var(--red);
+  padding: 12px;
+  font-size: 20px;
+}
+.btn-close {
+  color: var(--white);
+}
+
+#loginButon {
+  background-color: var(--purple) !important;
+  border: none !important;
+}
+
+body.modal-open .modal {
+  display: flex !important;
+  height: 100%;
+}
+
+body.modal-open .modal .modal-dialog {
+  margin: auto;
+}
+
+.modal-backdrop {
+  background-color: var(--black-light) !important;
+}
+.modal {
+  background-color: #1f1d2cf0 !important;
+}
+
+.sesion-iniciada {
+  background: var(--white);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 10000000000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sesion-iniciada article {
+  margin: 0 auto;
+  text-align: center;
+}
+.sesion-iniciada article img {
+  max-width: 130px;
+  margin-bottom: 30px;
+}
+
+.ocultarSesion {
+  opacity: 0;
+  z-index: 0;
+  display: none;
+}
