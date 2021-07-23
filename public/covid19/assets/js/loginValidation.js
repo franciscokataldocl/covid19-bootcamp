@@ -9,8 +9,6 @@ const errorLogin = document.getElementById("errorLogin");
 // pida al usuario ingresar un correo y una contraseña.
 
 (() => {
-  const cerrarSesion = document.getElementById("cerrarSesion");
-
   if (sessionStorage.getItem("llave") != undefined) {
     //si la llave existe mostramos cerrar sesion en el menu
     itemSesion.innerHTML = `
@@ -76,9 +74,12 @@ loginButon.addEventListener("click", (e) => {
 
 //cerrar sesion
 //deberia instanciar esta funcion solo si se encuentra la llave en sessionStorage
-cerrarSesion.addEventListener("click", (e) => {
-  //al hacer click en cerrar sesion eliminamos la llave
-  sessionStorage.removeItem("llave");
-  //redirigimos al home
-  window.location.href = "/covid19/";
-});
+const cerrarSesion = document.getElementById("cerrarSesion");
+if (typeof cerrarSesion != "undefined" && cerrarSesion != null) {
+  cerrarSesion.addEventListener("click", (e) => {
+    //al hacer click en cerrar sesion eliminamos la llave
+    sessionStorage.removeItem("llave");
+    //redirigimos al home
+    window.location.href = "/covid19/";
+  });
+}

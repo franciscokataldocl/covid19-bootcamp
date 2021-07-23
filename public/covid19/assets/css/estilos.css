@@ -160,3 +160,12 @@ body.modal-open .modal .modal-dialog {
 .modal {
   background-color: #1f1d2cf0 !important;
 } */
+
+.no-data {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  max-width: 90%;
+  left: 5%;
+}

@@ -95,32 +95,39 @@ const getSingleData = async (locationParameter) => {
     `;
 
     const { location, confirmed, deaths, recovered, active } = datos;
-    pais.innerHTML = location;
-    new Chart(document.getElementById("doughnut-chart"), {
-      type: "doughnut",
-      data: {
-        labels: ["Confirmados", "Muertos", "Recuperados", "Activos"],
-        datasets: [
-          {
-            label: "",
-            backgroundColor: [
-              "#6b5ecd",
-              "#099ff4",
-              "#ea5f5e",
-              "#22b080",
-              "#363342",
-            ],
-            data: [confirmed, deaths, recovered, active],
-          },
-        ],
-      },
-      options: {
-        title: {
-          display: true,
-          text: "Predicted world population (millions) in 2050",
+
+    if (location === undefined) {
+      pais.innerHTML = "";
+      modalCuerpo.innerHTML = `<img class="no-data" src="http://localhost:3000/covid19/assets/img/no-data.jpg" alt="" />`;
+    } else {
+      pais.innerHTML = location;
+      modalCuerpo.innerHTML = "";
+      new Chart(document.getElementById("doughnut-chart"), {
+        type: "doughnut",
+        data: {
+          labels: ["Confirmados", "Muertos", "Recuperados", "Activos"],
+          datasets: [
+            {
+              label: "",
+              backgroundColor: [
+                "#6b5ecd",
+                "#099ff4",
+                "#ea5f5e",
+                "#22b080",
+                "#363342",
+              ],
+              data: [confirmed, deaths, recovered, active],
+            },
+          ],
         },
-      },
-    });
+        options: {
+          title: {
+            display: true,
+            text: "Predicted world population (millions) in 2050",
+          },
+        },
+      });
+    }
   } catch (err) {
     console.log(err);
   }
@@ -136,7 +143,6 @@ const getModalButtons = async () => {
 
       locationParameter = e.target.getAttribute("data-location");
       // modalCuerpo.innerHTML = `${locationParameter}`;
-
       getSingleData(locationParameter);
     });
   }
