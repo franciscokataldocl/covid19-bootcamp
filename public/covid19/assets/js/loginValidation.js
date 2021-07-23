@@ -51,18 +51,9 @@ const loginValidation = async (email, password) => {
       //si token es undefined mostramos un mensaje de error
       errorLogin.innerHTML = `<p class="error-form text-center animate__animated animate__shakeX">Datos incorrectos</p>`;
     } else {
-    //si token existe lo almacenamos en sessionStorage
+      //si token existe lo almacenamos en sessionStorage
       sessionStorage.setItem("llave", token);
-      const sesionIniciada = document.getElementById("sesionIniciada");
-      //mostramos el mensaje de sesion iniciada
-      sesionIniciada.classList.remove("ocultarSesion");
 
-      //luego de 3 segundos ocultamos la ventana de sesion iniciada
-      function mensajeInicio() {
-        location.reload();
-        sesionIniciada.classList.add("ocultarSesion");
-      }
-      setTimeout(mensajeInicio, 3000);
       //eliminamos el mensaje de error del formulario en el modal
       errorLogin.innerHTML = "";
     }
