@@ -54,6 +54,7 @@ const loginValidation = async (email, password) => {
       //si token existe lo almacenamos en sessionStorage
       sessionStorage.setItem("llave", token);
 
+      location.reload();
       //eliminamos el mensaje de error del formulario en el modal
       errorLogin.innerHTML = "";
     }
